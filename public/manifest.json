@@ -1,0 +1,16 @@
+{
+  "name": "UniRide Admin Dashboard",
+  "short_name": "UniRide Admin",
+  "description": "Admin dashboard for managing UniRide Transport system.",
+  "start_url": "/admin",
+  "display": "standalone",
+  "background_color": "#06080F",
+  "theme_color": "#10B981",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
+    }
+  ]
+}

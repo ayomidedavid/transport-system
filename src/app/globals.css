@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Existing CSS variables kept for admin/dashboard compatibility ── */
+:root {
+  --primary: #10B981;
+  --secondary: #059669;
+  
+  /* Light mode defaults (Dashboard) */
+  --page-bg: #F4F6F8;
+  --page-text: #0F1114;
+  
+  --bg-dark: #000000;
+  --bg-card: #0A0A0A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #52525B;
+  --border: rgba(255,255,255,0.1);
+  --border-hover: rgba(16,185,129,0.4);
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --space-sm: 12px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+/* Dark mode override for Landing Page */
+.landing-theme {
+  --page-bg: #06080F;
+  --page-text: #FFFFFF;
+  background: #06080F;
+  color: #FFFFFF;
+  min-height: 100vh;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease;
+}
+
+/* Ensure the body gets the landing theme variables when needed */
+body:has(.landing-theme),
+body.landing-theme {
+  --page-bg: #06080F;
+  --page-text: #FFFFFF;
+}
+
+body.landing-menu-open {
+  overflow: hidden;
+}
+
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.025em; }
+
+/* ── GSAP initial state for word-reveal ── */
+.ur2-reveal-word {
+  display: inline;
+  opacity: 0.12;
+  color: #475569;
+  will-change: opacity, color;
+}
+
+/* ── Animation keyframes ── */
+@keyframes ticker-l    { from { transform: translateX(0); }      to { transform: translateX(-50%); } }
+@keyframes marquee-l   { from { transform: translateX(0); }      to { transform: translateX(-50%); } }
+@keyframes marquee-r   { from { transform: translateX(-50%); }   to { transform: translateX(0); }    }
+@keyframes scroll-wheel {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  60%      { transform: translateY(10px); opacity: 0; }
+}
+@keyframes cookie-up {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes hiw-prog { to { width: 100%; } }
+@keyframes hiw-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hiw-cursor-enter {
+  from { opacity: 0; transform: translate(10px, -10px); }
+  to   { opacity: 1; transform: translate(-2px, -2px); }
+}
+@keyframes hiw-ring-pulse {
+  from { transform: translate(-50%,-50%) scale(0.4); opacity: 1; }
+  to   { transform: translate(-50%,-50%) scale(1.6); opacity: 0; }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Legacy utility classes used by admin/dashboard ── */
+.ui-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: var(--transition-fast);
+}
+.ui-card:hover { border-color: var(--border-hover); }
+.btn-primary {
+  display: inline-block;
+  background-color: var(--primary);
+  color: #000;
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+.btn-primary:hover { background-color: #34D399; transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+.btn-secondary:hover { background-color: rgba(255,255,255,0.05); border-color: #fff; }
