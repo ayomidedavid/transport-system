@@ -8,7 +8,8 @@ using UniRide.Api.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x => 
+    x.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
@@ -17,9 +18,24 @@ builder.Services.AddHttpClient<UniRide.Api.Services.IEmailService, UniRide.Api.S
 builder.Services.AddScoped<UniRide.Api.Services.IAuthService, UniRide.Api.Services.AuthService>();
 builder.Services.AddScoped<UniRide.Api.Services.IBookingService, UniRide.Api.Services.BookingService>();
 
-// Configure EF Core with SQLite for local dev
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite("Data Source=uniride.db"));
+// Configure EF Core
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+if (!string.IsNullOrEmpty(databaseUrl))
+{
+    // Convert Render's postgres:// url to a .NET connection string
+    var connectionUrl = new Uri(databaseUrl);
+    var userInfo = connectionUrl.UserInfo.Split(':');
+    var connectionString = $"Host={connectionUrl.Host};Port={connectionUrl.Port};Database={connectionUrl.LocalPath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SslMode=Require;TrustServerCertificate=True;";
+    
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseNpgsql(connectionString));
+}
+else
+{
+    // Configure EF Core with SQLite for local dev
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlite("Data Source=uniride.db"));
+}
 
 // Configure JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
