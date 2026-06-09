@@ -25,7 +25,8 @@ if (!string.IsNullOrEmpty(databaseUrl))
     // Convert Render's postgres:// url to a .NET connection string
     var connectionUrl = new Uri(databaseUrl);
     var userInfo = connectionUrl.UserInfo.Split(':');
-    var connectionString = $"Host={connectionUrl.Host};Port={connectionUrl.Port};Database={connectionUrl.LocalPath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SslMode=Require;TrustServerCertificate=True;";
+    var port = connectionUrl.Port > 0 ? connectionUrl.Port : 5432;
+    var connectionString = $"Host={connectionUrl.Host};Port={port};Database={connectionUrl.LocalPath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SslMode=Require;TrustServerCertificate=True;";
     
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseNpgsql(connectionString));
