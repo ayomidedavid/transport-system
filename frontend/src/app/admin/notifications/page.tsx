@@ -54,12 +54,12 @@ export default function AdminNotificationsPage() {
       }
 
       if (targetVendor) {
-        if (targetVendor.verificationStatus === 'pending' || targetVendor.VerificationStatus === 'pending') {
-          await approveVendor(targetVendor.id || targetVendor.Id);
+        if (targetVendor.verificationStatus === 'pending' || (targetVendor as any).VerificationStatus === 'pending') {
+          await approveVendor(targetVendor.id || (targetVendor as any).Id);
           dismiss(n.id);
           return;
         } else {
-          alert(`This vendor (${targetVendor.name || targetVendor.Name}) is already approved!`);
+          alert(`This vendor (${targetVendor.name || (targetVendor as any).Name}) is already approved!`);
           dismiss(n.id);
           return;
         }
@@ -123,7 +123,7 @@ export default function AdminNotificationsPage() {
                     </span>
                   </div>
                   <p style={{ margin: 0, color: n.read ? 'var(--ad-text-muted)' : 'var(--ad-text)', fontSize: '0.95rem', lineHeight: 1.5 }}>{n.body}</p>
-                  {(n.type === 'vendor_approval' || n.type === 'vendor_approval_ping') && (
+                  {((n.type as string) === 'vendor_approval' || (n.type as string) === 'vendor_approval_ping') && (
                     <button 
                       onClick={() => handleApproveFromNotif(n)}
                       style={{ marginTop: 12, padding: '8px 16px', background: '#10B981', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}
