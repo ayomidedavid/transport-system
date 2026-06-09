@@ -1,0 +1,25 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace UniRide.Api.Data.Models
+{
+    public class User
+    {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        [Required]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string PasswordHash { get; set; } = string.Empty;
+
+        public bool EmailConfirmed { get; set; } = false;
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+        // Navigation
+        public Profile Profile { get; set; } = null!;
+    }
+}
