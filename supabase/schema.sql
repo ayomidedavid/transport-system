@@ -1,5 +1,5 @@
 -- ════════════════════════════════════════════════════════════
---  UNIRIDE — Supabase Schema
+--  UNITRANSIT — Supabase Schema
 --  Paste into: Supabase Dashboard → SQL Editor → Run
 -- ════════════════════════════════════════════════════════════
 
@@ -329,7 +329,7 @@ create index idx_otps_email_code     on public.otps(email, code);
 -- ════════════════════════════════════════════════════════════
 --  ADMIN USER SETUP
 --  Run AFTER creating the admin account in Supabase Auth:
---    Auth → Users → Invite user → admin@uniride.ng
+--    Auth → Users → Invite user → admin@unitransit.ng
 --  Then paste this (replace the UUID):
 -- ════════════════════════════════════════════════════════════
--- update public.profiles set role = 'admin' where email = 'admin@uniride.ng';
+-- update public.profiles set role = 'admin' where email = 'admin@unitransit.ng';

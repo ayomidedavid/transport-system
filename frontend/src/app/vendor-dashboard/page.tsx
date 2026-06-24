@@ -71,7 +71,7 @@ export default function VendorOverview() {
             <div className="rep-item">
               <span>Students</span>
               <strong>{vendorBookings.length}</strong>
-              <div style={{ height: 2, background: '#10B981', marginTop: 8 }} />
+              <div style={{ height: 2, background: 'var(--vd-primary)', marginTop: 8 }} />
             </div>
             <div className="rep-item">
               <span>Total Trips</span>
@@ -112,7 +112,7 @@ export default function VendorOverview() {
               
               <div style={{ display: 'flex', gap: 4, alignItems: 'flex-end', height: 40, marginTop: 20 }}>
                  {[40, 60, 45, 70, 30, 50, 80, 55, 65, 40, 75, 45, 60, 50, 70, 35, 40, 60, 55, 45].map((h, i) => (
-                    <div key={i} style={{ flex: 1, background: '#10B981', height: `${h}%`, borderRadius: 1 }} />
+                    <div key={i} style={{ flex: 1, background: 'var(--vd-primary)', height: `${h}%`, borderRadius: 1 }} />
                  ))}
               </div>
 
@@ -120,15 +120,15 @@ export default function VendorOverview() {
                  <div className="country-item">
                     <div className="vd-sidebar-logo-icon" style={{ width: 24, height: 24, borderRadius: 4 }} />
                     <div className="country-info">
-                       <strong>RUN Campus → Lagos</strong>
+                       <strong>Campus → Lagos</strong>
                        <span className="name">Popular Route</span>
                     </div>
-                    <span style={{ color: '#10B981', fontSize: '0.75rem' }}>+25.8%</span>
+                    <span style={{ color: 'var(--vd-primary)', fontSize: '0.75rem' }}>+25.8%</span>
                  </div>
                  <div className="country-item">
                     <div className="vd-sidebar-logo-icon" style={{ width: 24, height: 24, borderRadius: 4, background: '#EF4444' }} />
                     <div className="country-info">
-                       <strong>RUN Campus → Ibadan</strong>
+                       <strong>Campus → Ibadan</strong>
                        <span className="name">Direct Route</span>
                     </div>
                     <span style={{ color: '#EF4444', fontSize: '0.75rem' }}>-15.8%</span>
@@ -144,7 +144,7 @@ export default function VendorOverview() {
       <div className="card-table">
         <div className="card-header" style={{ padding: 0, marginBottom: 24 }}>
            <h2>Recent Bookings</h2>
-           <button className="tab" style={{ background: '#10B981', color: '#fff', display: 'flex', alignItems: 'center', gap: 6 }} onClick={() => navigate('/vendor/bookings')}>
+           <button className="tab" style={{ background: 'var(--vd-primary)', color: '#fff', display: 'flex', alignItems: 'center', gap: 6 }} onClick={() => navigate('/vendor/bookings')}>
               View All
            </button>
         </div>

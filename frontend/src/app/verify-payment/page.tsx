@@ -67,7 +67,7 @@ export default function VerifyPaymentPage() {
             width: '60px', 
             height: '60px', 
             borderRadius: '18px', 
-            background: '#10B981', 
+            background: '#ffffff', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center' 
@@ -78,7 +78,7 @@ export default function VerifyPaymentPage() {
 
         {status === 'verifying' && (
           <>
-            <LucideLoader2 size={48} className="animate-spin" style={{ color: '#10B981', margin: '0 auto 1.5rem' }} />
+            <LucideLoader2 size={48} className="animate-spin" style={{ color: '#ffffff', margin: '0 auto 1.5rem' }} />
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>Verifying Payment</h2>
             <p style={{ color: '#888', lineHeight: 1.5 }}>Please wait while we confirm your transaction with Paystack.</p>
           </>
@@ -86,10 +86,10 @@ export default function VerifyPaymentPage() {
 
         {status === 'success' && (
           <>
-            <LucideCheckCircle size={48} style={{ color: '#10B981', margin: '0 auto 1.5rem' }} />
+            <LucideCheckCircle size={48} style={{ color: '#ffffff', margin: '0 auto 1.5rem' }} />
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>Payment Successful!</h2>
             <p style={{ color: '#888', lineHeight: 1.5 }}>{message}</p>
-            <p style={{ color: '#10B981', fontSize: '0.85rem', marginTop: '1.5rem', fontWeight: 600 }}>Redirecting to your bookings...</p>
+            <p style={{ color: '#ffffff', fontSize: '0.85rem', marginTop: '1.5rem', fontWeight: 600 }}>Redirecting to your bookings...</p>
           </>
         )}
 
@@ -102,7 +102,7 @@ export default function VerifyPaymentPage() {
               onClick={() => navigate('/dashboard/browse')}
               style={{ 
                 marginTop: '2rem', 
-                background: '#10B981', 
+                background: '#ffffff', 
                 color: '#000', 
                 border: 'none', 
                 padding: '0.75rem 2rem', 

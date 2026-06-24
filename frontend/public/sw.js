@@ -1,4 +1,4 @@
-const CACHE_NAME = 'uniride-admin-cache-v1';
+const CACHE_NAME = 'unitransit-admin-cache-v1';
 const urlsToCache = [
   '/',
   '/admin',

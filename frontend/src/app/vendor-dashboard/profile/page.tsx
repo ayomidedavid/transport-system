@@ -35,7 +35,7 @@ export default function VendorProfilePage() {
         <div className="side-stats">
           <div className="side-card" style={{ textAlign: 'center' }}>
              <div style={{ position: 'relative', width: 120, height: 120, margin: '0 auto 24px' }}>
-                <div style={{ width: '100%', height: '100%', borderRadius: 24, background: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', fontWeight: 800, color: '#fff' }}>
+                <div style={{ width: '100%', height: '100%', borderRadius: 24, background: 'var(--vd-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', fontWeight: 800, color: '#fff' }}>
                   {company.name[0]}
                 </div>
                 <button style={{ position: 'absolute', right: -10, bottom: -10, width: 40, height: 40, borderRadius: 12, background: '#fff', border: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
@@ -47,10 +47,10 @@ export default function VendorProfilePage() {
              
              <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 16, textAlign: 'left' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                   <div style={{ width: 32, height: 32, borderRadius: 8, background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><LucideShieldCheck size={16} color="#10B981" /></div>
+                   <div style={{ width: 32, height: 32, borderRadius: 8, background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><LucideShieldCheck size={16} color="var(--vd-primary)" /></div>
                    <div>
                       <span style={{ display: 'block', fontSize: '0.75rem', color: '#94A3B8' }}>Status</span>
-                      <strong style={{ fontSize: '0.875rem', color: '#10B981' }}>Verified Logistics</strong>
+                      <strong style={{ fontSize: '0.875rem', color: 'var(--vd-primary)' }}>Verified Logistics</strong>
                    </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -108,7 +108,7 @@ export default function VendorProfilePage() {
                  type="submit" 
                  disabled={saving}
                  className="vd-btn-primary" 
-                 style={{ padding: '12px 32px', borderRadius: 12, background: '#10B981', color: '#fff', border: 'none', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}
+                 style={{ padding: '12px 32px', borderRadius: 12, background: 'var(--vd-primary)', color: '#fff', border: 'none', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}
                >
                  {saving ? 'Saving...' : <><LucideSave size={18} /> Save Profile</>}
                </button>

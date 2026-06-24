@@ -2,10 +2,10 @@
    ROOT  &  GLOBAL
 ══════════════════════════════════════════ */
 .ur2-root {
-  --green:      #10B981;
-  --green-dim:  rgba(16,185,129,0.10);
-  --green-glow: rgba(16,185,129,0.35);
-  --border-g:   rgba(16,185,129,0.25);
+  --green:      #FFFFFF;
+  --green-dim:  rgba(255,255,255,0.08);
+  --green-glow: rgba(255,255,255,0.25);
+  --border-g:   rgba(255,255,255,0.18);
   --bg:    #06080F;
   --bg2:   #0A0D18;
   --bg3:   #0D1018;
@@ -53,7 +53,7 @@
 .ur2-nav.scrolled {
   top: 0.6rem;
   background: rgba(6,8,15,0.88);
-  border-color: rgba(16,185,129,0.18);
+  border-color: rgba(255,255,255,0.12);
   box-shadow: 0 10px 30px rgba(0,0,0,0.45);
 }
 .ur2-nav-inner {
@@ -120,7 +120,7 @@
   position: absolute;
   inset: -30% 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(16,185,129,0.07) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
   z-index: 0; pointer-events: none;
 }
 .ur2-grid-overlay {
@@ -132,10 +132,10 @@
 }
 .ur2-para-orbs { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .ur2-orb { position: absolute; border-radius: 50%; filter: blur(80px); }
-.ur2-orb-a { width: 600px; height: 600px; top: -100px; left: -100px; background: radial-gradient(circle, rgba(16,185,129,0.09) 0%, transparent 70%); }
-.ur2-orb-b { width: 500px; height: 500px; bottom: -80px; right: -80px; background: radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%); }
-.ur2-orb-c { width: 350px; height: 350px; top: 40%; left: 40%; background: radial-gradient(circle, rgba(16,185,129,0.04) 0%, transparent 70%); }
-.ur2-dot-cluster { position: absolute; top: 20%; right: 8%; width: 200px; height: 200px; background-image: radial-gradient(circle, rgba(16,185,129,0.2) 1.5px, transparent 1.5px); background-size: 22px 22px; }
+.ur2-orb-a { width: 600px; height: 600px; top: -100px; left: -100px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); }
+.ur2-orb-b { width: 500px; height: 500px; bottom: -80px; right: -80px; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); }
+.ur2-orb-c { width: 350px; height: 350px; top: 40%; left: 40%; background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%); }
+.ur2-dot-cluster { position: absolute; top: 20%; right: 8%; width: 200px; height: 200px; background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px); background-size: 22px 22px; }
 
 /* Hero inner content */
 .ur2-hero-inner {
@@ -752,7 +752,7 @@
 
 .ur2-cta-card {
   max-width: 1280px; margin: 0 auto;
-  background: #0A3D2B; border-radius: 28px;
+  background: #111827; border-radius: 28px;
   overflow: hidden; display: flex; align-items: stretch;
   min-height: 340px; position: relative;
 }
@@ -782,7 +782,7 @@
 }
 .ur2-cta-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: #0A3D2B;
+  background: #fff; color: #111827;
   padding: 11px 24px; border-radius: 100px;
   font-size: 0.88rem; font-weight: 700;
   text-decoration: none; width: fit-content;
@@ -821,15 +821,15 @@
   box-shadow: 0 12px 32px rgba(0,0,0,0.25);
 }
 .ur2-cta-card-fhead { display: flex; align-items: center; justify-content: space-between; }
-.ur2-cta-card-flogo { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 800; color: #0A3D2B; letter-spacing: 0.03em; }
-.ur2-cta-card-ftag { font-size: 0.62rem; font-weight: 600; color: rgba(10,61,43,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
-.ur2-cta-card-froute { font-size: 1.05rem; font-weight: 800; color: #0A3D2B; letter-spacing: -0.02em; }
+.ur2-cta-card-flogo { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 800; color: #111827; letter-spacing: 0.03em; }
+.ur2-cta-card-ftag { font-size: 0.62rem; font-weight: 600; color: rgba(17,24,39,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
+.ur2-cta-card-froute { font-size: 1.05rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
 .ur2-cta-card-fmeta { display: flex; align-items: center; justify-content: space-between; }
-.ur2-cta-card-fmeta span { font-size: 0.68rem; color: rgba(10,61,43,0.5); }
-.ur2-cta-card-fprice { font-weight: 700 !important; color: #0A3D2B !important; font-size: 0.8rem !important; }
+.ur2-cta-card-fmeta span { font-size: 0.68rem; color: rgba(17,24,39,0.5); }
+.ur2-cta-card-fprice { font-weight: 700 !important; color: #111827 !important; font-size: 0.8rem !important; }
 .ur2-cta-card-fbar {
   position: absolute; bottom: 0; left: 0; right: 0;
-  height: 4px; background: linear-gradient(90deg,#10B981,#0A3D2B);
+  height: 4px; background: linear-gradient(90deg,#ffffff,#111827);
   border-radius: 0 0 14px 14px;
 }
 

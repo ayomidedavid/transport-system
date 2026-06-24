@@ -9,6 +9,14 @@ import {
 import { useUser } from '../../_context/UserContext';
 import { useNotifications } from '../../_context/NotificationContext';
 import { api } from '../../../lib/api';
+import { generateTicketPdf } from '../../../lib/ticket-generator';
+
+// Declare PaystackPop on the window object
+declare global {
+  interface Window {
+    PaystackPop: any;
+  }
+}
 
 type Amenity = 'AC' | 'WiFi' | 'USB Charging' | 'Movies' | 'Refreshments';
 const AMENITY_CLASS: Record<Amenity, string> = {
@@ -134,78 +142,117 @@ export default function BrowsePage() {
   function closeModal() { if (status === 'paying') return; setTrip(null); }
 
   async function handlePay() {
-    if (payTab === 'card') {
-      const errs = validateCard(card);
-      if (Object.keys(errs).length) { setErrors(errs); return; }
-    }
     if (!trip || !user) return;
     setStatus('paying');
 
-    try {
-      const now            = new Date();
-      const ref            = genRef();
-      const seat           = genSeat();
-      const route          = `Campus → ${trip.to}`;
-      const bookingDate    = `${trip.date}, ${now.getFullYear()}`;
-      const bookingTime    = trip.timeRange.split(' – ')[0];
+    const now            = new Date();
+    const ref            = genRef();
+    const seat           = genSeat();
+    const route          = `Campus → ${trip.to}`;
+    const bookingDate    = `${trip.date}, ${now.getFullYear()}`;
+    const bookingTime    = trip.timeRange.split(' – ')[0];
 
-      // 1. Create the booking record (status: confirmed directly for mock)
-      const { data: booking } = await api.post('/bookings', {
-        studentId:   user.id,
-        tripId:      trip.id,
-        vendorId:    trip.vendorId || null,
-        route,
-        company:      trip.company,
-        destination:  trip.to,
-        vehicleType: trip.vehicleType,
-        date:         bookingDate,
-        time:         bookingTime,
-        pickup:       'Main Gate',
-        seat,
-        ref,
-        amount:       trip.price,
-        priceNum:    trip.priceNum,
+    const processBooking = async () => {
+      try {
+        // 1. Create the booking record
+        const { data: booking } = await api.post('/bookings', {
+          studentId:   user.id,
+          tripId:      trip.id,
+          vendorId:    trip.vendorId || null,
+          route,
+          company:      trip.company,
+          destination:  trip.to,
+          vehicleType: trip.vehicleType,
+          date:         bookingDate,
+          time:         bookingTime,
+          pickup:       'Main Gate',
+          seat,
+          ref,
+          amount:       trip.price,
+          priceNum:    trip.priceNum,
+        });
+
+        // 2. Log the transaction as successful
+        await api.post('/transactions', {
+          bookingId:   booking.id,
+          studentId:   user.id,
+          vendorId:    trip.vendorId || null,
+          ref:          `TXN-${now.toISOString().slice(0,10).replace(/-/g,'')}-${ref.slice(2)}`,
+          studentName: passengerName,
+          vendorName:  trip.company,
+          route,
+          amount:       trip.priceNum,
+          type:         'booking',
+          status:       'successful',
+        });
+
+        // 3. Add to local state and notify
+        addBooking(booking);
+        
+        await addNotif({
+          type: 'booking',
+          title: 'Booking Confirmed',
+          body: `Your trip to ${trip.to} has been confirmed. Seat: ${seat}`,
+          bookingRef: ref,
+        });
+
+        // 4. Generate the PDF Ticket
+        await generateTicketPdf({
+          ref,
+          date: bookingDate,
+          time: bookingTime,
+          passengerName,
+          route,
+          company: trip.company,
+          vehicleType: trip.vehicleType,
+          amount: trip.price,
+          seat
+        });
+
+        setStatus('done');
+        setToast('Booking successful! Your receipt has been downloaded.');
+        
+        setTimeout(() => {
+           closeModal();
+           navigate('/dashboard/tickets');
+        }, 2500);
+
+      } catch (err: any) {
+        console.error('Payment Error:', err);
+        alert(err.response?.data?.error || err.message || 'An error occurred during booking processing.');
+        setStatus('idle');
+      }
+    };
+
+    if (payTab === 'card') {
+      // Trigger Paystack Popup
+      if (!window.PaystackPop) {
+        alert("Paystack script hasn't loaded yet. Please refresh the page.");
+        setStatus('idle');
+        return;
+      }
+
+      const handler = window.PaystackPop.setup({
+        key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_test_e4c84a5...replace_me', // Replace with your test key if env var is missing
+        email: passengerEmail || 'student@redboox.com',
+        amount: trip.priceNum * 100, // Paystack expects amount in kobo
+        currency: 'NGN',
+        ref: ref,
+        callback: function(response: any) {
+          // Payment successful!
+          processBooking();
+        },
+        onClose: function() {
+          setStatus('idle');
+          alert('Payment was cancelled.');
+        }
       });
-
-      // 2. Log the transaction as successful
-      await api.post('/transactions', {
-        bookingId:   booking.id,
-        studentId:   user.id,
-        vendorId:    trip.vendorId || null,
-        ref:          `TXN-${now.toISOString().slice(0,10).replace(/-/g,'')}-${ref.slice(2)}`,
-        studentName: passengerName,
-        vendorName:  trip.company,
-        route,
-        amount:       trip.priceNum,
-        type:         'booking',
-        status:       'successful',
-      });
-
-      // 3. Add to local state and notify
-      addBooking(booking);
-      
-      await addNotif({
-        type: 'booking',
-        title: 'Booking Confirmed',
-        body: `Your trip to ${trip.to} has been confirmed. Seat: ${seat}`,
-        bookingRef: ref,
-      });
-
-      setStatus('done');
-      setToast('Booking successful!');
-      
-      setTimeout(() => {
-         closeModal();
-         navigate('/dashboard/tickets');
-      }, 2000);
-
-    } catch (err: any) {
-      console.error('Payment Error:', err);
-      alert(err.response?.data?.error || err.message || 'An error occurred during payment processing.');
-      setStatus('idle');
+      handler.openIframe();
+    } else {
+      // Transfer or Wallet
+      processBooking();
     }
   }
-
   function fmtCard(val: string) {
     return val.replace(/\D/g,'').slice(0,16).replace(/(.{4})/g,'$1 ').trim();
   }
@@ -333,55 +380,10 @@ export default function BrowsePage() {
                 </div>
 
                 {payTab === 'card' && (
-                  <div className="pay-fields">
-                    <div>
-                      <p className="pay-field-label">Card Number <span className="req">*</span></p>
-                      <input
-                        className={`pay-input ${errors.number ? 'error' : ''}`}
-                        placeholder="1234 5678 9012 3456"
-                        value={card.number}
-                        onChange={e => { setCard(c => ({...c, number: fmtCard(e.target.value)})); setErrors(er => ({...er, number: undefined})); }}
-                        maxLength={19}
-                        inputMode="numeric"
-                      />
-                      {errors.number && <p style={{ fontSize:'0.72rem', color:'var(--red)', marginTop:3 }}>{errors.number}</p>}
-                    </div>
-                    <div>
-                      <p className="pay-field-label">Cardholder Name <span className="req">*</span></p>
-                      <input
-                        className={`pay-input ${errors.name ? 'error' : ''}`}
-                        placeholder="JOHN DOE"
-                        value={card.name}
-                        onChange={e => { setCard(c => ({...c, name: e.target.value.toUpperCase()})); setErrors(er => ({...er, name: undefined})); }}
-                      />
-                      {errors.name && <p style={{ fontSize:'0.72rem', color:'var(--red)', marginTop:3 }}>{errors.name}</p>}
-                    </div>
-                    <div className="pay-row">
-                      <div>
-                        <p className="pay-field-label">Expiry Date <span className="req">*</span></p>
-                        <input
-                          className={`pay-input ${errors.expiry ? 'error' : ''}`}
-                          placeholder="MM/YY"
-                          value={card.expiry}
-                          onChange={e => { setCard(c => ({...c, expiry: fmtExpiry(e.target.value)})); setErrors(er => ({...er, expiry: undefined})); }}
-                          maxLength={5}
-                        />
-                        {errors.expiry && <p style={{ fontSize:'0.72rem', color:'var(--red)', marginTop:3 }}>{errors.expiry}</p>}
-                      </div>
-                      <div>
-                        <p className="pay-field-label">CVV <span className="req">*</span></p>
-                        <input
-                          className={`pay-input ${errors.cvv ? 'error' : ''}`}
-                          placeholder="123"
-                          value={card.cvv}
-                          onChange={e => { setCard(c => ({...c, cvv: e.target.value.replace(/\D/g,'').slice(0,4)})); setErrors(er => ({...er, cvv: undefined})); }}
-                          maxLength={4}
-                          type="password"
-                          inputMode="numeric"
-                        />
-                        {errors.cvv && <p style={{ fontSize:'0.72rem', color:'var(--red)', marginTop:3 }}>{errors.cvv}</p>}
-                      </div>
-                    </div>
+                  <div className="bank-box" style={{ marginTop: '1rem', padding: '1.5rem', textAlign: 'center', background: '#f9fafb', borderRadius: '12px' }}>
+                    <p style={{ fontWeight: 600, color: '#111827', marginBottom: '0.5rem' }}>Secure Card Payment</p>
+                    <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '1rem' }}>You will be redirected to Paystack to complete this transaction securely.</p>
+                    <img src="https://paystack.com/assets/payment/img/paystack-badge-cards.png" alt="Paystack" style={{ height: '30px', margin: '0 auto' }} />
                   </div>
                 )}
 
@@ -390,7 +392,7 @@ export default function BrowsePage() {
                     <div className="bank-box">
                       <div className="bank-row"><span className="bank-key">Bank Name</span>      <span className="bank-val">First Bank Nigeria</span></div>
                       <div className="bank-row"><span className="bank-key">Account Number</span> <span className="bank-val">1234567890</span></div>
-                      <div className="bank-row"><span className="bank-key">Account Name</span>   <span className="bank-val">UniRide Payments</span></div>
+                      <div className="bank-row"><span className="bank-key">Account Name</span>   <span className="bank-val">UniTransit Payments</span></div>
                       <div className="bank-row"><span className="bank-key">Amount</span>         <span className="bank-val">{trip.price}</span></div>
                     </div>
                     <div className="bank-note">
@@ -403,7 +405,7 @@ export default function BrowsePage() {
                   <div className="wallet-box">
                     <div className="wallet-top">
                       <div>
-                        <p className="wallet-name">UniRide Wallet</p>
+                        <p className="wallet-name">UniTransit Wallet</p>
                         <p className="wallet-sub">Available Balance</p>
                       </div>
                       <p className="wallet-balance">₦25,000</p>

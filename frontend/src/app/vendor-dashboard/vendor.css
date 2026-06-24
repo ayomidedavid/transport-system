@@ -1,11 +1,11 @@
 /* ═══════════════════════════
-   UNIRIDE — Vendor Dashboard (Mockup Rebuild)
+   UNITRANSIT — Vendor Dashboard (Mockup Rebuild)
    Theme: Professional Light (Dealport inspired)
 ═══════════════════════════ */
 
 :root {
-  --vd-primary:     #10B981;
-  --vd-primary-light: rgba(16, 185, 129, 0.1);
+  --vd-primary:     #000000;
+  --vd-primary-light: rgba(0, 0, 0, 0.05);
   --vd-bg:          #F8FAFB;
   --vd-sidebar-w:   260px;
   --vd-header-h:    72px;
@@ -25,6 +25,8 @@
   --vd-text-sub:    #94A3B8;
   --vd-shadow-sm:   0 1px 2px 0 rgba(0, 0, 0, 0.5);
   --vd-shadow-md:   0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --vd-primary:     #FFFFFF;
+  --vd-primary-light: rgba(255, 255, 255, 0.09);
 }
 
 body.vd-dark-body {
@@ -130,7 +132,11 @@ body.vd-dark-body {
 .vd-nav-item.active {
   background: var(--vd-primary);
   color: #fff;
-  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+}
+.vd-dark .vd-nav-item.active {
+  color: #000 !important;
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Button interactive states */
@@ -141,13 +147,13 @@ body.vd-dark-body {
 
 .vd-btn-primary:hover, .btn-details:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 20px -5px rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15) !important;
   filter: brightness(1.05);
 }
 
 .vd-btn-primary:active, .btn-details:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 5px 10px -3px rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .vd-btn-outline:hover {
@@ -437,7 +443,7 @@ body.vd-dark-body {
 .fake-graph {
   height: 240px;
   width: 100%;
-  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg"><path d="M0,150 Q100,140 200,120 T400,130 T600,100 T800,110" fill="none" stroke="%2310B981" stroke-width="3" /><path d="M0,150 Q100,140 200,120 T400,130 T600,100 T800,110 V200 H0 Z" fill="rgba(16, 185, 129, 0.1)" /></svg>');
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg"><path d="M0,150 Q100,140 200,120 T400,130 T600,100 T800,110" fill="none" stroke="%2364748B" stroke-width="3" /><path d="M0,150 Q100,140 200,120 T400,130 T600,100 T800,110 V200 H0 Z" fill="rgba(100, 116, 139, 0.05)" /></svg>');
   background-size: cover;
   position: relative;
 }

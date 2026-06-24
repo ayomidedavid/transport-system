@@ -30,7 +30,7 @@ export default function AdminLayout() {
   const { notifs, markAllRead, dismiss } = useNotifications();
 
   const [authState, setAuthState] = useState<'loading' | 'ok' | 'denied'>('loading');
-  const [adminEmail, setAdminEmail] = useState('admin@uniride.ng');
+  const [adminEmail, setAdminEmail] = useState('admin@unitransit.ng');
   const [adminName, setAdminName] = useState('Platform Admin');
   const [notifOpen,  setNotifOpen]  = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -117,7 +117,7 @@ export default function AdminLayout() {
         <aside className={`ad-sidebar ${mobileSidebarOpen ? 'open' : ''}`}>
           <div className="ad-sidebar-logo">
             <div className="ad-logo-icon"><LucideBus size={18} color="#000" /></div>
-            <div className="ad-logo-text">UniRide Admin</div>
+            <div className="ad-logo-text">UniTransit Admin</div>
             <button className="ad-menu-toggle" onClick={() => setMobileSidebarOpen(false)} style={{ marginLeft: 'auto' }}>
               <LucideX size={20} />
             </button>
@@ -211,7 +211,7 @@ export default function AdminLayout() {
                             <div className="ad-notif-meta">
                               <span>{n.time}</span>
                               <span>•</span>
-                              <span>UNIRIDE System</span>
+                              <span>UNITRANSIT System</span>
                             </div>
                           </div>
                           

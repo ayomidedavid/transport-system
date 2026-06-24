@@ -1,5 +1,5 @@
 /* ════════════════════════════════
-   UNIRIDE — Admin Dashboard
+   UNITRANSIT — Admin Dashboard
    NevBank Inspired Theme
 ════════════════════════════════ */
 
@@ -12,8 +12,8 @@
   --ad-bg:             #F8FAFC;
   --ad-surface:        #FFFFFF;
   --ad-sidebar-bg:     #FFFFFF;
-  --ad-green:          #10B981;
-  --ad-green-dim:      rgba(16, 185, 129, 0.08);
+  --ad-green:          #000000;
+  --ad-green-dim:      rgba(0, 0, 0, 0.05);
   --ad-text-main:      #0F172A;
   --ad-text-muted:     #64748B;
   --ad-border:         #E2E8F0;
@@ -39,6 +39,8 @@
   --ad-text-muted:     #94A3B8;
   --ad-border:         rgba(255, 255, 255, 0.06);
   --ad-shadow:         0 8px 32px rgba(0,0,0,0.4);
+  --ad-green:          #FFFFFF;
+  --ad-green-dim:      rgba(255, 255, 255, 0.08);
 }
 
 /* ══════════════════

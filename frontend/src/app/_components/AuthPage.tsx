@@ -25,7 +25,7 @@ function Brand() {
     <Link to="/" className="auth-brand">
       <div className="auth-brand-icon"><LucideBus size={17} /></div>
       <div>
-        <p className="auth-brand-name">UNIRIDE</p>
+        <p className="auth-brand-name">UNITRANSIT</p>
         <p className="auth-brand-sub">University Transport Management</p>
       </div>
     </Link>
@@ -33,7 +33,7 @@ function Brand() {
 }
 
 function genStudentId() {
-  return 'RUN/' + Math.floor(10000 + Math.random() * 90000);
+  return 'UNI/' + Math.floor(10000 + Math.random() * 90000);
 }
 
 export function AuthPage({ initialMode }: { initialMode: Mode }) {
@@ -75,8 +75,8 @@ export function AuthPage({ initialMode }: { initialMode: Mode }) {
       if (!sig.firstName.trim())        return setError('First name is required.');
       if (!sig.lastName.trim())         return setError('Last name is required.');
       if (!sig.email.trim())            return setError('Email is required.');
-      if (!sig.email.toLowerCase().endsWith('@run.edu.ng'))
-        return setError('Only @run.edu.ng institutional emails are allowed.');
+      if (!sig.email.toLowerCase().endsWith('.edu.ng'))
+        return setError('Only .edu.ng institutional emails are allowed.');
       if (!sig.matric.trim())           return setError('Matric number is required.');
       if (!sig.phone.trim())            return setError('Phone number is required.');
       if (!dept)                        return setError('Please select your department.');
@@ -97,7 +97,8 @@ export function AuthPage({ initialMode }: { initialMode: Mode }) {
         });
         
         if (data.ok) {
-          navigate('/verify', { state: { email: signupEmail, password: sig.password.trim() } });
+          login(data.user, data.token);
+          navigate('/dashboard');
         }
       } catch (err: any) {
         setError(err.response?.data?.error || err.message || 'Could not reach the server. Please try again.');
@@ -125,13 +126,21 @@ export function AuthPage({ initialMode }: { initialMode: Mode }) {
         });
         
         if (data.ok) {
-          navigate('/verify', {
-            state: {
-              email: signupEmail,
-              password: sig.password.trim(),
-              accountType: 'logistics'
-            }
-          });
+          login(data.user, data.token);
+          if (data.vendor) {
+            vendorLogin({
+              id:                 data.vendor.id,
+              backendId:          data.vendor.id,
+              name:               data.vendor.name,
+              registrationNumber: data.vendor.registrationNumber || '',
+              contactPerson:      data.vendor.contactPerson,
+              email:              data.vendor.email,
+              phone:              data.vendor.phone || '',
+              address:            data.vendor.address || '',
+              verificationStatus: data.vendor.verificationStatus,
+            });
+          }
+          navigate('/vendor');
         }
       } catch (err: any) {
         setError(err.response?.data?.error || err.message || 'An unexpected error occurred.');
@@ -259,7 +268,7 @@ export function AuthPage({ initialMode }: { initialMode: Mode }) {
                       <div className="auth-field-group"><label>Matric Number</label><div className="auth-input-wrap"><LucideBookOpen size={13} className="auth-input-icon" /><input type="text" placeholder="STU/2024/001" value={sig.matric} onChange={e => us('matric', e.target.value)} /></div></div>
                       <div className="auth-field-group"><label>Phone Number</label><div className="auth-input-wrap"><LucidePhone size={13} className="auth-input-icon" /><input type="tel" placeholder="+234 800" value={sig.phone} onChange={e => us('phone', e.target.value)} /></div></div>
                     </div>
-                    <div className="auth-field-group"><label>Institutional Email</label><div className="auth-input-wrap"><LucideMail size={13} className="auth-input-icon" /><input type="email" placeholder="you@run.edu.ng" value={sig.email} onChange={e => us('email', e.target.value)} /></div></div>
+                    <div className="auth-field-group"><label>Institutional Email</label><div className="auth-input-wrap"><LucideMail size={13} className="auth-input-icon" /><input type="email" placeholder="you@student.edu.ng" value={sig.email} onChange={e => us('email', e.target.value)} /></div></div>
                     <div className="auth-field-group"><label>Department</label><div className="auth-input-wrap"><LucideBuilding2 size={13} className="auth-input-icon" /><select value={dept} onChange={e => setDept(e.target.value)}><option value="">Select department</option>{DEPARTMENTS.map(d => <option key={d} value={d}>{d}</option>)}</select><LucideChevronDown size={13} className="auth-select-arrow" /></div></div>
                     <div className="auth-fields-row">
                       <div className="auth-field-group"><label>Password</label><div className="auth-input-wrap"><LucideLock size={13} className="auth-input-icon" /><input type={signupShowPass ? 'text' : 'password'} value={sig.password} onChange={e => us('password', e.target.value)} /><button type="button" className="auth-eye" onClick={() => setSignupShowPass(!signupShowPass)}>{signupShowPass ? <LucideEyeOff size={13} /> : <LucideEye size={13} />}</button></div></div>
@@ -349,15 +358,15 @@ export function AuthPage({ initialMode }: { initialMode: Mode }) {
       <div className="auth-info-panel">
         <div className="auth-info-body auth-info-login">
           <h2>Seamless University<br />Transportation</h2>
-          <p>Connect RUN students with verified logistics partners for safe, reliable travel.</p>
+          <p>Connect tertiary institution students with verified logistics partners for safe, reliable travel.</p>
           <ul className="auth-feat-list">
             <li><span className="auth-feat-dot"><LucideShieldCheck size={13} /></span>Verified Transport Partners</li>
             <li><span className="auth-feat-dot"><LucideClock size={13} /></span>Real-time Trip Tracking</li>
           </ul>
         </div>
         <div className="auth-info-body auth-info-signup">
-          <h2>Join UNIRIDE<br />Today</h2>
-          <p>The only travel platform made exclusively for Redeemer's University students.</p>
+          <h2>Join UNITRANSIT<br />Today</h2>
+          <p>The only travel platform made exclusively for tertiary institution students.</p>
           <ul className="auth-feat-list">
             <li><span className="auth-feat-dot"><LucideBus size={13} /></span>Book verified transport</li>
             <li><span className="auth-feat-dot"><LucideMapPin size={13} /></span>Track your journey live</li>

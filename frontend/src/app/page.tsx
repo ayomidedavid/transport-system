@@ -22,7 +22,7 @@ function HeroIllo() {
   return (
     <svg viewBox="0 0 580 420" fill="none" xmlns="http://www.w3.org/2000/svg" className="hero-illo">
       {/* Browser frame */}
-      <rect x="0" y="0" width="540" height="380" rx="16" fill="#0D1120" stroke="rgba(16,185,129,0.25)" strokeWidth="1.5"/>
+      <rect x="0" y="0" width="540" height="380" rx="16" fill="#0D1120" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
       {/* Browser chrome */}
       <rect x="0" y="0" width="540" height="42" rx="16" fill="#111827"/>
       <rect x="0" y="30" width="540" height="12" fill="#111827"/>
@@ -34,8 +34,8 @@ function HeroIllo() {
 
       {/* Sidebar */}
       <rect x="0" y="42" width="160" height="338" rx="0" fill="#0A0F1C"/>
-      <rect x="16" y="66" width="128" height="36" rx="8" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" strokeWidth="1"/>
-      <rect x="28" y="79" width="70" height="10" rx="4" fill="#10B981"/>
+      <rect x="16" y="66" width="128" height="36" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" strokeWidth="1"/>
+      <rect x="28" y="79" width="70" height="10" rx="4" fill="#ffffff"/>
       {['My Bookings','Routes','Profile','Settings'].map((_, i) => (
         <rect key={i} x="16" y={118+i*44} width="128" height="36" rx="8" fill="rgba(255,255,255,0.025)"/>
       ))}
@@ -47,7 +47,7 @@ function HeroIllo() {
       {/* Header */}
       <rect x="176" y="58" width="200" height="18" rx="6" fill="rgba(255,255,255,0.07)"/>
       <rect x="176" y="58" width="120" height="18" rx="6" fill="rgba(255,255,255,0.12)"/>
-      <rect x="464" y="56" width="60" height="22" rx="8" fill="#10B981"/>
+      <rect x="464" y="56" width="60" height="22" rx="8" fill="#ffffff"/>
       <rect x="470" y="62" width="48" height="10" rx="4" fill="rgba(0,0,0,0.3)"/>
 
       {/* Stats row */}
@@ -55,7 +55,7 @@ function HeroIllo() {
         <g key={i}>
           <rect x={176+i*90} y="90" width="82" height="62" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
           <rect x={186+i*90} y="102" width={[44,38,52,40][i]} height="8" rx="3" fill="rgba(255,255,255,0.3)"/>
-          <rect x={186+i*90} y="114" width={[28,34,24,32][i]} height="22" rx="4" fill={i===0 ? '#10B981' : 'rgba(255,255,255,0.15)'}/>
+          <rect x={186+i*90} y="114" width={[28,34,24,32][i]} height="22" rx="4" fill={i===0 ? '#ffffff' : 'rgba(255,255,255,0.15)'}/>
           <rect x={186+i*90} y="138" width={[36,42,30,38][i]} height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
         </g>
       ))}
@@ -67,33 +67,33 @@ function HeroIllo() {
           <rect x="190" y={180+i*58} width={[80,72,88][i]} height="10" rx="4" fill="rgba(255,255,255,0.3)"/>
           <rect x="190" y={194+i*58} width={[56,64,48][i]} height="8" rx="3" fill="rgba(255,255,255,0.1)"/>
           <rect x={412} y={180+i*58} width="96" height="10" rx="4" fill="rgba(255,255,255,0.08)"/>
-          <rect x={430} y={194+i*58} width={60} height="8" rx="3" fill="rgba(16,185,129,0.4)"/>
+          <rect x={430} y={194+i*58} width={60} height="8" rx="3" fill="rgba(255,255,255,0.25)"/>
           {/* Status pill */}
-          <rect x={340} y={179+i*58} width={60} height={18} rx="9" fill={i===0 ? 'rgba(16,185,129,0.15)' : i===1 ? 'rgba(59,130,246,0.15)' : 'rgba(255,255,255,0.05)'} stroke={i===0 ? 'rgba(16,185,129,0.4)' : i===1 ? 'rgba(59,130,246,0.3)' : 'rgba(255,255,255,0.1)'} strokeWidth="1"/>
-          <rect x={348} y={185+i*58} width={44} height={6} rx="3" fill={i===0 ? '#10B981' : i===1 ? '#3B82F6' : 'rgba(255,255,255,0.2)'}/>
+          <rect x={340} y={179+i*58} width={60} height={18} rx="9" fill={i===0 ? 'rgba(255,255,255,0.08)' : i===1 ? 'rgba(59,130,246,0.15)' : 'rgba(255,255,255,0.05)'} stroke={i===0 ? 'rgba(255,255,255,0.2)' : i===1 ? 'rgba(59,130,246,0.3)' : 'rgba(255,255,255,0.1)'} strokeWidth="1"/>
+          <rect x={348} y={185+i*58} width={44} height={6} rx="3" fill={i===0 ? '#ffffff' : i===1 ? '#3B82F6' : 'rgba(255,255,255,0.2)'}/>
         </g>
       ))}
 
       {/* Map preview in bottom right of dashboard */}
-      <rect x="176" y="344" width="168" height="60" rx="10" fill="#0D1B2A" stroke="rgba(16,185,129,0.2)" strokeWidth="1"/>
+      <rect x="176" y="344" width="168" height="60" rx="10" fill="#0D1B2A" stroke="rgba(255,255,255,0.1)" strokeWidth="1"/>
       <line x1="176" y1="370" x2="344" y2="370" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
       <line x1="260" y1="344" x2="260" y2="404" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
-      <path d="M196 390 Q220 370 240 358 Q260 346 280 350" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3" fill="none"/>
-      <circle cx="196" cy="390" r="5" fill="#10B981"/>
+      <path d="M196 390 Q220 370 240 358 Q260 346 280 350" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3" fill="none"/>
+      <circle cx="196" cy="390" r="5" fill="#ffffff"/>
       <circle cx="280" cy="350" r="5" fill="#FF6B6B"/>
 
       {/* Activity chart */}
       <rect x="352" y="344" width="172" height="60" rx="10" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
       {[0,1,2,3,4,5,6].map(i => (
-        <rect key={i} x={364+i*22} y={404-[20,32,16,38,26,42,30][i]} width="14" height={[20,32,16,38,26,42,30][i]} rx="3" fill={i===5 ? '#10B981' : 'rgba(16,185,129,0.25)'}/>
+        <rect key={i} x={364+i*22} y={404-[20,32,16,38,26,42,30][i]} width="14" height={[20,32,16,38,26,42,30][i]} rx="3" fill={i===5 ? '#ffffff' : 'rgba(255,255,255,0.15)'}/>
       ))}
 
       {/* Floating notification */}
-      <rect x="390" y="20" width="180" height="52" rx="12" fill="#0F2418" stroke="#10B981" strokeWidth="1" filter="url(#glow)"/>
-      <circle cx="410" cy="46" r="10" fill="rgba(16,185,129,0.2)"/>
-      <path d="M405 46 L408 49 L415 42" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <rect x="390" y="20" width="180" height="52" rx="12" fill="#111827" stroke="rgba(255,255,255,0.15)" strokeWidth="1" filter="url(#glow)"/>
+      <circle cx="410" cy="46" r="10" fill="rgba(255,255,255,0.08)"/>
+      <path d="M405 46 L408 49 L415 42" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       <rect x="426" y="38" width="90" height="8" rx="3" fill="rgba(255,255,255,0.6)"/>
-      <rect x="426" y="50" width="60" height="6" rx="2" fill="rgba(16,185,129,0.5)"/>
+      <rect x="426" y="50" width="60" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
     </svg>
   );
 }
@@ -104,7 +104,7 @@ const REVIEWS = [
   { name: 'Fatima A.', role: 'Year 2, BUK',       quote: 'The student discount alone sold me. Clean coaches, verified drivers, support that actually responds.' },
   { name: 'Chidi O.',  role: 'Year 3, UNIBEN',    quote: 'I used to spend hours at motor parks. Now I book my seat from my hostel room.' },
   { name: 'Amara S.',  role: 'Final Year, OAU',   quote: 'Every ride has been on time. Professional drivers and air-conditioned coaches. Absolutely love it.' },
-  { name: 'Tunde B.',  role: 'Year 2, UI',        quote: 'Whether I need to get home for the holidays or visit a friend, UNIRIDE has me covered.' },
+  { name: 'Tunde B.',  role: 'Year 2, UI',        quote: 'Whether I need to get home for the holidays or visit a friend, UNITRANSIT has me covered.' },
   { name: 'Ngozi E.',  role: 'Postgrad, UNIPORT', quote: 'This app changed my routine. My commute is fully sorted in advance every single time.' },
   { name: 'Yusuf I.',  role: 'Year 4, ABU',       quote: 'Safe, affordable, and the live tracking gives my parents total peace of mind on every trip.' },
 ];
@@ -129,13 +129,13 @@ function CtaIllo() {
       <div className="ur2-cta-card-back">
         <div className="ur2-cta-card-brow">
           <LucideBus size={13} />
-          <span>UNIRIDE</span>
+          <span>UNITRANSIT</span>
         </div>
         <div className="ur2-cta-card-bchip" />
       </div>
       <div className="ur2-cta-card-front">
         <div className="ur2-cta-card-fhead">
-          <div className="ur2-cta-card-flogo"><LucideBus size={12} /><span>UNIRIDE</span></div>
+          <div className="ur2-cta-card-flogo"><LucideBus size={12} /><span>UNITRANSIT</span></div>
           <span className="ur2-cta-card-ftag">E-Ticket</span>
         </div>
         <div className="ur2-cta-card-froute">Ede → Lagos</div>
@@ -159,10 +159,10 @@ const HIW_STEPS = [
   { num: '04', label: 'Track & Travel', sub: 'Board with your phone — track live.' },
 ];
 const HIW_URLS = [
-  'uniride.ng/dashboard/browse',
-  'uniride.ng/dashboard/browse',
-  'uniride.ng/dashboard/bookings',
-  'uniride.ng/dashboard',
+  'unitransit.ng/dashboard/browse',
+  'unitransit.ng/dashboard/browse',
+  'unitransit.ng/dashboard/bookings',
+  'unitransit.ng/dashboard',
 ];
 const DEMO_TRIPS = [
   { co: 'K', name: 'KV Transport',           dest: 'Lagos',  time: '07:00 AM', price: '₦8,500', rating: '4.8' },
@@ -268,7 +268,7 @@ function DemoConfirmed() {
         <p className="hiw-conf-sub">Your seat is reserved. E-ticket ready.</p>
         <div className="hiw-eticket">
           <div className="hiw-et-head">
-            <div className="hiw-et-logo"><LucideBus size={11} /><span>UNIRIDE</span></div>
+            <div className="hiw-et-logo"><LucideBus size={11} /><span>UNITRANSIT</span></div>
             <div className="hiw-et-ref">BK-0042</div>
           </div>
           <div className="hiw-et-route">Ede Campus → Lagos</div>
@@ -438,12 +438,12 @@ export default function LandingPage() {
 
   const handleGoogleLogin = async (googleResponse: any) => {
     const email = googleResponse.profileObj.email;
-    if (!email.endsWith('@run.edu.ng')) {
-      alert('Access Denied: You must use your @run.edu.ng institutional email to join the UniRide student network.');
+    if (!email.endsWith('.edu.ng')) {
+      alert('Access Denied: You must use a valid .edu.ng institutional email to join the UniTransit student network.');
       return;
     }
     // Proceed with authentication...
-    console.log('Verified RUN student:', email);
+    console.log('Verified student:', email);
   };
 
   useEffect(() => {
@@ -567,7 +567,7 @@ export default function LandingPage() {
       {/* ── Navbar ── */}
       <nav className={`ur2-nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="ur2-nav-inner">
-          <a href="#" className="ur2-logo">uni<span>ride</span></a>
+          <a href="#" className="ur2-logo">uni<span>transit</span></a>
 
           {/* DESKTOP LINKS (Hidden on mobile) */}
           <div className="ur2-nav-links ur2-desktop-only-links">
@@ -639,7 +639,7 @@ export default function LandingPage() {
               <span className="line accent">Campus Travel.</span>
             </h1>
             <p className="ur2-hero-sub">
-              One platform. Every agency. Book and pay for your travel from Redeemer's University to any city in Nigeria, all in one place.
+              One platform. Every agency. Book and pay for your travel from your tertiary institution to any city in Nigeria, all in one place.
             </p>
           </div>
 
@@ -690,18 +690,18 @@ export default function LandingPage() {
       {/* ── Value Pillars — scroll word-reveal ── */}
       <section className="ur2-pillars-section">
         <div className="ur2-container">
-          <div className="ur2-section-label">The UNIRIDE platform</div>
+          <div className="ur2-section-label">The UNITRANSIT platform</div>
 
           <h2 className="ur2-section-h2 centered" style={{ maxWidth: '900px', margin: '0 auto 2rem' }}>
             <ScrollRevealText
-              text="One account. Every logistics provider in school. Stop jumping between different apps and motor parks. UNIRIDE unifies all transport agencies into a single, secure booking experience."
+              text="One account. Every logistics provider in school. Stop jumping between different apps and motor parks. UNITRANSIT unifies all transport agencies into a single, secure booking experience."
             />
           </h2>
 
           <div className="ur2-content-expanded">
             <p className="ur2-section-sub centered">
               <ScrollRevealText
-                text="Redefining the campus commute for over 10,000 students. We've built the infrastructure so you can focus on your lectures, not your luggage. Institutional security, verified partners, and a seamless digital wallet—everything you need to move across Nigeria from the heart of RUN."
+                text="Redefining the campus commute for over 10,000 students. We've built the infrastructure so you can focus on your lectures, not your luggage. Institutional security, verified partners, and a seamless digital wallet—everything you need to move across Nigeria from the heart of your tertiary institution."
               />
             </p>
           </div>
@@ -715,7 +715,7 @@ export default function LandingPage() {
           <div className="ur2-section-label" data-reveal>How It Works</div>
           <h2 className="ur2-section-h2 centered" data-reveal>See the platform in action</h2>
           <p className="ur2-section-sub centered" data-reveal>
-            A live walkthrough of the actual UNIRIDE app — from search to seat.
+            A live walkthrough of the actual UNITRANSIT app — from search to seat.
           </p>
           <HowItWorksDemo step={hiwStep} tick={hiwTick} onSetStep={(s) => { hiwStepRef.current = s; setHiwStep(s); setHiwTick(t => t + 1); }} />
         </div>
@@ -769,7 +769,7 @@ export default function LandingPage() {
                 Ready to travel<br /><em>without the stress?</em>
               </h2>
               <p className="ur2-cta-sub">
-                Built exclusively for Redeemer's University students — book your Ede–Lagos ride in under a minute.
+                Built exclusively for tertiary institution students — book your Ede–Lagos ride in under a minute.
               </p>
               <Link to={user ? '/dashboard/browse' : '/signup'} className="ur2-cta-btn">
                 {user ? 'View Routes' : 'Book a Ride Free'} <LucideArrowRight size={15} />
@@ -792,7 +792,7 @@ export default function LandingPage() {
         <div className={`ur2-cookie-banner${cookieOpen ? ' instant' : ''}`}>
           <div className="ur2-cookie-text">
             <span className="ur2-cookie-icon"><LucideCookie size={20} /></span>
-            <p>We use cookies to improve your experience. By continuing to use UNIRIDE, you agree to our <a href="#">Cookie Policy</a>.</p>
+            <p>We use cookies to improve your experience. By continuing to use UNITRANSIT, you agree to our <a href="#">Cookie Policy</a>.</p>
           </div>
           <div className="ur2-cookie-actions">
             <button className="ur2-cookie-decline" onClick={() => {
@@ -854,7 +854,7 @@ export default function LandingPage() {
           <div className="ur2-footer-hero-inner">
 
             <div className="ur2-footer-hero-top">
-              <span className="ur2-footer-hero-logo">uni<span>ride</span></span>
+              <span className="ur2-footer-hero-logo">uni<span>transit</span></span>
               <span className="ur2-footer-hero-tag">Campuses Connected. Students Moving.</span>
             </div>
 

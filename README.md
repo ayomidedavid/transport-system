@@ -1,11 +1,11 @@
-# UNIRIDE - Smart Logistics for Campus Transit
+# UNITRANSIT - Smart Logistics for Campus Transit
 
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 
-UNIRIDE (formerly Unitransit) is a premium, full-stack logistics and transport management platform designed to streamline student travel between campuses and cities. It provides a seamless interface for students to book trips and a professional dashboard for logistics vendors to manage their fleet and revenue.
+UNITRANSIT is a premium, full-stack logistics and transport management platform designed to streamline student travel between campuses and cities. It provides a seamless interface for students to book trips and a professional dashboard for logistics vendors to manage their fleet and revenue.
 
 ---
 
@@ -135,4 +135,4 @@ Distributed under the MIT License. See LICENSE for more information.
 
 ---
 
-**Built by the UNIRIDE Team**
+**Built by the UNITRANSIT Team**

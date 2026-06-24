@@ -12,7 +12,7 @@ export const api = axios.create({
 
 // Add a request interceptor to attach the JWT token to every request
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('uniride_token');
+  const token = localStorage.getItem('unitransit_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -25,8 +25,8 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use((response) => response, (error) => {
   if (error.response?.status === 401) {
     // Optionally trigger a global logout event here if the token expires
-    localStorage.removeItem('uniride_token');
-    localStorage.removeItem('uniride_user');
+    localStorage.removeItem('unitransit_token');
+    localStorage.removeItem('unitransit_user');
   }
   return Promise.reject(error);
 });

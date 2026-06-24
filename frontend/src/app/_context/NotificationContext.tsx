@@ -64,7 +64,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5129';
       connection = new signalR.HubConnectionBuilder()
         .withUrl(`${apiUrl}/notifications`, {
-          accessTokenFactory: () => localStorage.getItem('uniride_token') || ''
+          accessTokenFactory: () => localStorage.getItem('unitransit_token') || ''
         })
         .withAutomaticReconnect()
         .build();

@@ -26,10 +26,10 @@ export default function AdminSettingsPage() {
         <div className="ad-card">
           <div className="ad-card-hd"><h3>Core Configuration</h3></div>
           {[
-            { label: 'Platform Name', value: 'UNIRIDE' },
-            { label: 'Default University', value: "Redeemer's University, Ede" },
-            { label: 'Admin Email', value: 'admin@uniride.ng' },
-            { label: 'Support Email', value: 'support@uniride.ng' },
+            { label: 'Platform Name', value: 'UNITRANSIT' },
+            { label: 'Default University', value: "tertiary institution" },
+            { label: 'Admin Email', value: 'admin@unitransit.ng' },
+            { label: 'Support Email', value: 'support@unitransit.ng' },
           ].map(item => (
             <div key={item.label} style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'16px 0', borderBottom:'1px solid var(--ad-border)' }}>
               <span style={{ fontSize:'0.85rem', color:'var(--ad-text-muted)' }}>{item.label}</span>

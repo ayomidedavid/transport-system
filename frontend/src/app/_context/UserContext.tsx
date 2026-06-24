@@ -66,13 +66,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading,  setLoading]  = useState(true);
   const [theme,    setTheme]    = useState<'light' | 'dark'>(() => {
-    return readStoredValue('ur_theme', 'light') as 'light' | 'dark';
+    return readStoredValue('ut_theme', 'light') as 'light' | 'dark';
   });
 
   const toggleTheme = useCallback(() => {
     setTheme(prev => {
       const next = prev === 'light' ? 'dark' : 'light';
-      writeStoredValue('ur_theme', next);
+      writeStoredValue('ut_theme', next);
       return next;
     });
   }, []);
@@ -88,7 +88,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const init = async () => {
-      const token = localStorage.getItem('uniride_token');
+      const token = localStorage.getItem('unitransit_token');
       if (token) {
         try {
           const { data } = await api.get('/auth/me');
@@ -96,7 +96,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
           await fetchBookings(data.id);
         } catch (e) {
           console.error('Auth check failed:', e);
-          localStorage.removeItem('uniride_token');
+          localStorage.removeItem('unitransit_token');
         }
       }
       setLoading(false);
@@ -105,13 +105,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   }, [fetchBookings]);
 
   const login = useCallback((u: User, token: string) => {
-    localStorage.setItem('uniride_token', token);
+    localStorage.setItem('unitransit_token', token);
     setUser(u);
     fetchBookings(u.id);
   }, [fetchBookings]);
 
   const logout = useCallback(() => {
-    localStorage.removeItem('uniride_token');
+    localStorage.removeItem('unitransit_token');
     setUser(null);
     setBookings([]);
   }, []);

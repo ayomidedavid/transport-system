@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
+**/node_modules/
+*.db
+**/*.db
 /.pnp
 .pnp.*
 .yarn/*
@@ -40,3 +43,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dotnet build artifacts
+**/bin/
+**/obj/
+
+# python build artifacts
+__pycache__/
+*.pyc
+**/*.pyc

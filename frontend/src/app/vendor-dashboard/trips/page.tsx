@@ -77,12 +77,12 @@ function CreateTripModal({ onClose }: { onClose: () => void }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                {/* Route */}
                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.75rem', fontWeight: 700, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.75rem', fontWeight: 700, color: 'var(--vd-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                      <LucideMapPin size={16} /> Route Details
                   </div>
                   <div className="vd-field">
                     <label style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--vd-text-main)', marginBottom: 8, display: 'block' }}>Origin</label>
-                    <input style={{ height: 52, borderRadius: 14, border: '1px solid var(--vd-border)', background: 'var(--vd-surface)', color: 'var(--vd-text-main)', padding: '0 16px', fontSize: '1rem', width: '100%', outline: 'none' }} placeholder="e.g. RUN Campus, Ede" value={form.origin} onChange={e => set('origin', e.target.value)} />
+                    <input style={{ height: 52, borderRadius: 14, border: '1px solid var(--vd-border)', background: 'var(--vd-surface)', color: 'var(--vd-text-main)', padding: '0 16px', fontSize: '1rem', width: '100%', outline: 'none' }} placeholder="e.g. Campus, Ede" value={form.origin} onChange={e => set('origin', e.target.value)} />
                     {errors.origin && <span style={{ color: '#EF4444', fontSize: '0.75rem', marginTop: 6, fontWeight: 500 }}>{errors.origin}</span>}
                   </div>
                   <div className="vd-field" style={{ marginTop: 8 }}>
@@ -94,7 +94,7 @@ function CreateTripModal({ onClose }: { onClose: () => void }) {
 
                {/* Schedule */}
                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.75rem', fontWeight: 700, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.75rem', fontWeight: 700, color: 'var(--vd-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                      <LucideCalendar size={16} /> Schedule
                   </div>
                   <div className="vd-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -115,7 +115,7 @@ function CreateTripModal({ onClose }: { onClose: () => void }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                {/* Vehicle */}
                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.75rem', fontWeight: 700, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.75rem', fontWeight: 700, color: 'var(--vd-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                      <LucideBus size={16} /> Vehicle & Pricing
                   </div>
                   <div className="vd-field">
@@ -150,7 +150,7 @@ function CreateTripModal({ onClose }: { onClose: () => void }) {
 
         <div className="vd-modal-footer" style={{ padding: '32px 40px', background: 'var(--vd-surface)', borderTop: '1px solid var(--vd-border)', display: 'flex', gap: 16 }}>
           <button className="vd-btn-outline" style={{ flex: 1, height: 56, borderRadius: 16, border: '1px solid var(--vd-border)', background: 'transparent', color: 'var(--vd-text-main)', fontWeight: 600, fontSize: '1rem', cursor: 'pointer', transition: 'all 0.2s' }} onClick={onClose}>Cancel</button>
-          <button className="vd-btn-primary" style={{ flex: 2, height: 56, borderRadius: 16, border: 'none', background: 'var(--vd-primary)', color: '#fff', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', boxShadow: '0 10px 20px -5px rgba(16, 185, 129, 0.4)', transition: 'all 0.2s' }} onClick={submit}>Create Trip Now</button>
+          <button className="vd-btn-primary" style={{ flex: 2, height: 56, borderRadius: 16, border: 'none', background: 'var(--vd-primary)', color: '#fff', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', boxShadow: '0 10px 20px -5px rgba(0, 0, 0, 0.15)', transition: 'all 0.2s' }} onClick={submit}>Create Trip Now</button>
         </div>
       </div>
     </div>
@@ -176,7 +176,7 @@ export default function TripsPage() {
           <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Manage Trips</h1>
           <p style={{ color: '#64748B', fontSize: '0.875rem' }}>Organize and schedule your student transport services.</p>
         </div>
-        <button className="vd-btn-primary" style={{ padding: '12px 24px', borderRadius: 12, background: '#10B981', color: '#fff', border: 'none', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }} onClick={() => setShowModal(true)}>
+        <button className="vd-btn-primary" style={{ padding: '12px 24px', borderRadius: 12, background: 'var(--vd-primary)', color: '#fff', border: 'none', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }} onClick={() => setShowModal(true)}>
           <LucidePlus size={18} /> Create New Trip
         </button>
       </div>
@@ -225,7 +225,7 @@ export default function TripsPage() {
                   </td>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.875rem', fontWeight: 500 }}>
-                       <LucideCalendar size={14} color="#10B981" /> {t.departureDate}
+                       <LucideCalendar size={14} color="var(--vd-primary)" /> {t.departureDate}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', color: '#94A3B8', marginTop: 4 }}>
                        <LucideClock size={12} /> {t.departureTime}
@@ -239,7 +239,7 @@ export default function TripsPage() {
                           <span style={{ fontWeight: 700 }}>{Math.round((t.availableSeats / t.totalSeats) * 100)}%</span>
                        </div>
                        <div style={{ height: 6, background: '#F1F5F9', borderRadius: 3, overflow: 'hidden' }}>
-                          <div style={{ height: '100%', background: '#10B981', width: `${(t.availableSeats / t.totalSeats) * 100}%` }} />
+                          <div style={{ height: '100%', background: 'var(--vd-primary)', width: `${(t.availableSeats / t.totalSeats) * 100}%` }} />
                        </div>
                     </div>
                   </td>

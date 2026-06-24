@@ -7,7 +7,7 @@ export function downloadUsersPDF(data: Record<string, string | number>[], filena
   const doc = new jsPDF('landscape');
   
   // Custom styling elements
-  const primaryColor: [number, number, number] = [16, 185, 129]; // emerald-500
+  const primaryColor: [number, number, number] = [0, 0, 0]; // Black
   const textColor: [number, number, number] = [15, 23, 42]; // slate-900
   const mutedColor: [number, number, number] = [100, 116, 139]; // slate-500
 
@@ -19,7 +19,7 @@ export function downloadUsersPDF(data: Record<string, string | number>[], filena
   doc.setFontSize(22);
   doc.setTextColor(255, 255, 255);
   doc.setFont('helvetica', 'bold');
-  doc.text('UNIRIDE ADMIN REPORT', 14, 11);
+  doc.text('UNITRANSIT ADMIN REPORT', 14, 11);
 
   // Subtitle / Date
   doc.setFontSize(11);
@@ -75,7 +75,7 @@ export function downloadUsersPDF(data: Record<string, string | number>[], filena
       doc.text(str, data.settings.margin.left, pageHeight - 10);
       
       // Footer branding
-      doc.text('UniRide Transport Management System', pageSize.width - data.settings.margin.right, pageHeight - 10, { align: 'right' });
+      doc.text('UniTransit Transport Management System', pageSize.width - data.settings.margin.right, pageHeight - 10, { align: 'right' });
     }
   });
 

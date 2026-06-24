@@ -1,18 +1,18 @@
 /* ═══════════════════════════════════════════
-   UNIRIDE — Student Dashboard
+   UNITRANSIT — Student Dashboard
    Theme: Black · White · Green
    ═══════════════════════════════════════════ */
 
 :root {
-  --green:        #10B981;
-  --green-dark:   #059669;
-  --green-light:  rgba(16,185,129,0.09);
-  --green-border: rgba(16,185,129,0.22);
-  --green-glow:   0 4px 18px rgba(16,185,129,0.32);
+  --green:        #000000;
+  --green-dark:   #1e293b;
+  --green-light:  rgba(0, 0, 0, 0.05);
+  --green-border: rgba(0, 0, 0, 0.15);
+  --green-glow:   0 4px 18px rgba(0, 0, 0, 0.12);
 
   --sidebar-bg:   #FFFFFF;
   --sidebar-text: #64748B;
-  --sidebar-text-active: #10B981;
+  --sidebar-text-active: #000000;
   --sidebar-border: rgba(0,0,0,0.04);
   --sidebar-w:    260px;
   --header-h:     72px;
@@ -42,7 +42,7 @@
   --card:         #0F111A;
   --sidebar-bg:   #0F111A;
   --sidebar-text: #94A3B8;
-  --sidebar-text-active: #10B981;
+  --sidebar-text-active: #ffffff;
   --sidebar-border: rgba(255,255,255,0.06);
   --text1:        #F8FAFC;
   --text2:        #94A3B8;
@@ -52,6 +52,12 @@
   --shadow-sm:    0 1px 2px rgba(0,0,0,0.3);
   --shadow-md:    0 10px 15px -3px rgba(0,0,0,0.5);
   
+  --green:        #ffffff;
+  --green-dark:   #f3f4f6;
+  --green-light:  rgba(255,255,255,0.09);
+  --green-border: rgba(255,255,255,0.22);
+  --green-glow:   0 4px 18px rgba(255,255,255,0.2);
+
   --page-bg:      #06080F; /* Override globals.css variable */
   --page-text:    #F8FAFC;
 }
@@ -347,7 +353,7 @@ input, select, textarea { font-family: inherit; }
    OVERVIEW
 ══════════════════════ */
 .dash-welcome {
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border: none;
   border-radius: var(--radius);
   padding: 2rem 2.5rem;
@@ -358,7 +364,7 @@ input, select, textarea { font-family: inherit; }
   gap: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
   color: #fff;
 }
 .dash-welcome::before {
@@ -385,7 +391,7 @@ input, select, textarea { font-family: inherit; }
 /* Custom button for welcome card to prevent wrapping */
 .dash-welcome .btn-primary {
   background: #fff;
-  color: #059669;
+  color: #0f172a;
   padding: 12px 20px;
   border-radius: 12px;
   font-weight: 700;

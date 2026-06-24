@@ -55,8 +55,8 @@ export default function AdminLoginPage() {
           <div className="adl-panel-badge">
             <LucideShieldCheck size={22} color="#10B981" />
           </div>
-          <h2>UniRide Platform<br />Control Center</h2>
-          <p>Centralized management for Redeemer's University logistics. Oversee every agency, booking, and transaction in real-time.</p>
+          <h2>UniTransit Platform<br />Control Center</h2>
+          <p>Centralized management for tertiary institution logistics. Oversee every agency, booking, and transaction in real-time.</p>
 
           <ul className="adl-feat-list">
             <li><span className="adl-feat-dot"><LucideLayoutDashboard size={13} /></span>Unified Fleet Oversight</li>
@@ -78,13 +78,13 @@ export default function AdminLoginPage() {
           <Link to="/" className="adl-brand">
             <div className="adl-brand-icon"><LucideBus size={17} /></div>
             <div>
-              <p className="adl-brand-name">UNIRIDE</p>
+              <p className="adl-brand-name">UNITRANSIT</p>
               <p className="adl-brand-sub">Admin Dashboard</p>
             </div>
           </Link>
 
           <h1 className="adl-heading">Admin Login</h1>
-          <p className="adl-subheading">Sign in to manage the UNIRIDE platform.</p>
+          <p className="adl-subheading">Sign in to manage the UNITRANSIT platform.</p>
 
           {error && <div className="adl-error">{error}</div>}
 

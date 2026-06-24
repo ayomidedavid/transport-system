@@ -84,7 +84,7 @@ export default function VendorBookingsPage() {
            
            <button 
              onClick={handleExport}
-             style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: '#10B981', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600 }}
+             style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--vd-primary)', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600 }}
            >
              <LucideDownload size={16} /> Export CSV
            </button>
@@ -117,7 +117,7 @@ export default function VendorBookingsPage() {
                   </td>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.875rem', fontWeight: 500 }}>
-                       <LucideMapPin size={14} color="#10B981" /> {b.route}
+                       <LucideMapPin size={14} color="var(--vd-primary)" /> {b.route}
                     </div>
                     <div style={{ fontSize: '0.75rem', color: '#94A3B8', marginTop: 2 }}>{b.date}</div>
                   </td>
@@ -133,7 +133,7 @@ export default function VendorBookingsPage() {
                       <div style={{ display: 'flex', gap: 8 }}>
                         <button 
                           className="vd-btn-primary" 
-                          style={{ padding: '6px 12px', fontSize: '0.75rem', borderRadius: 8, background: '#10B981', color: '#fff', border: 'none', cursor: 'pointer' }}
+                          style={{ padding: '6px 12px', fontSize: '0.75rem', borderRadius: 8, background: 'var(--vd-primary)', color: '#fff', border: 'none', cursor: 'pointer' }}
                           onClick={() => confirmBooking(b.id)}
                         >
                           Confirm

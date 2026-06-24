@@ -45,7 +45,7 @@ export default function DashboardLayout() {
         <div className="dash-sidebar-logo">
           <div className="dash-logo-icon"><LucideBus size={17} /></div>
           <div>
-            <p className="dash-logo-name">UNIRIDE</p>
+            <p className="dash-logo-name">UNITRANSIT</p>
             <p className="dash-logo-sub">Student Portal</p>
           </div>
         </div>

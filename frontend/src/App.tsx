@@ -5,7 +5,7 @@ import { NotificationProvider } from './app/_context/NotificationContext';
 import { AdminProvider } from './app/_context/AdminContext';
 import LandingPage from './app/page';
 import { AuthPage } from './app/_components/AuthPage';
-import VerifyPage from './app/verify/page';
+
 import DashboardLayout from './app/dashboard/layout';
 import OverviewPage from './app/dashboard/page';
 import BrowsePage from './app/dashboard/browse/page';
@@ -42,7 +42,7 @@ export default function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login"  element={<AuthPage initialMode="login"  />} />
             <Route path="/signup" element={<AuthPage initialMode="signup" />} />
-            <Route path="/verify"        element={<VerifyPage />} />
+
             <Route path="/verify-payment" element={<VerifyPaymentPage />} />
             <Route path="/admin/login"   element={<AdminLoginPage />} />
 

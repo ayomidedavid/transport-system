@@ -149,7 +149,7 @@ export function VendorProvider({ children }: { children: React.ReactNode }) {
   /* ── Auth state listener ── */
   useEffect(() => {
     const init = async () => {
-      const token = localStorage.getItem('uniride_token');
+      const token = localStorage.getItem('unitransit_token');
       if (token) {
         try {
           const { data } = await api.get('/auth/me');
@@ -226,7 +226,7 @@ export function VendorProvider({ children }: { children: React.ReactNode }) {
       const { data } = await api.get(`/vendors/${company.id}?t=${Date.now()}`);
       if (data) {
         if (data.verificationStatus === 'approved') {
-          alert('Good news! Your account has been approved. Welcome to UniRide!');
+          alert('Good news! Your account has been approved. Welcome to UniTransit!');
           window.location.reload();
         } else if (data.verificationStatus === 'rejected') {
           alert('Your account verification was rejected. Please contact support.');

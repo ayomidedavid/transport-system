@@ -100,7 +100,7 @@ export default function VendorLayout() {
               <div>
                 <h2 style={{ fontSize: '1.85rem', fontWeight: 800, color: 'var(--vd-text-main)', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>Account Under Review</h2>
                 <p style={{ color: 'var(--vd-text-sub)', lineHeight: 1.6, fontSize: '1.05rem', margin: 0 }}>
-                  Welcome to UNIRIDE! Your registration for <strong>{company.name}</strong> is being verified by our team.
+                  Welcome to UNITRANSIT! Your registration for <strong>{company.name}</strong> is being verified by our team.
                 </p>
               </div>
               <div style={{ display: 'flex', gap: '1rem', width: '100%' }}>
@@ -130,7 +130,7 @@ export default function VendorLayout() {
           <div className="vd-sidebar-logo-icon">
              <LucideBus size={18} color="#fff" />
           </div>
-          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.02em' }}>UNIRIDE</span>
+          <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.02em' }}>UNITRANSIT</span>
         </div>
 
         <div className="vd-nav-scroll">
